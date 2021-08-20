@@ -14,7 +14,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "rescripts start",
+    "start": "set PORT=3000 && rescripts start",
     "build": "rescripts build",
     "test": "rescripts test"
   },

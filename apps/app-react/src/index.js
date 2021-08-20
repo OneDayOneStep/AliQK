@@ -17,15 +17,16 @@ if (!window.__POWERED_BY_QIANKUN__) {
 }
 
 export async function bootstrap() {
-    console.log('[react16] react app bootstraped');
+    console.log('app-react bootstraped');
 }
 
 export async function mount(props) {
-    console.log('[react16] props from main framework', props);
     render(props);
+    console.log('app-react mount', props);
 }
 
 export async function unmount(props) {
     const {container} = props;
     ReactDOM.unmountComponentAtNode(container ? container.querySelector('#root') : document.querySelector('#root'));
+    console.log('app-react unMount');
 }

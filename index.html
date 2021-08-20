@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QK</title>
+    <style>
+        html, body {
+            margin: 0;
+        }
+        .microAppList {
+            box-shadow: 0 0 4px #888;
+            margin: 0;
+            padding: 10px;
+            font-family: Arial, serif;
+            font-size: 0;
+        }
+        .microAppList li {
+            display: inline-block;
+            line-height: 40px;
+            padding: 0 10px;
+            background: #555;
+            color: #fff;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 13px;
+        }
+        .microAppList .active {
+            background: #66cccc;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+<div class="mainApp">
+    <ul class="microAppList"></ul>
+    <main id="microAppContainer"></main>
+</div>
+
+<script>
+    const apps = [{
+        name: "React",
+        path: "/app-react",
+        effective: true
+    }, {
+        name: "Vue for cli",
+        path: "/app-vue-cli",
+        effective: true
+    }, {
+        name: "Vue for vite",
+        path: "/app-vue-vite",
+        effective: false
+    }];
+
+    function push(t, app) {
+        if (!app.effective) {
+            alert("暂未支持");
+            return;
+        }
+        Array.from(document.getElementsByClassName("active")).forEach(e =>{
+            e.classList.remove("active");
+        });
+        t.classList.add("active");
+        history.pushState(null, "", app.path);
+    }
+
+    const microAppList = document.querySelector(".microAppList");
+    apps.forEach(e => {
+        const li = document.createElement("li");
+        li.innerText = e.name;
+        li.onclick = function (ev) {
+            push(ev.target, e);
+        }
+        if (location.pathname.includes(e.path)) {
+            li.classList.add("active");
+        }
+        microAppList.appendChild(li);
+    });
+</script>
+</body>
+</html>
