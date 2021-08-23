@@ -8,8 +8,8 @@ module.exports = {
     },
     devServer: {
         open: true,
-        port: '12345',
-        historyApiFallback:true
+        port: '5500',
+        historyApiFallback: true // 忽略地址栏 pathname 都返回 index.html 解决非根路径刷新 404 的问题
     },
     plugins: [
         new HtmlWebpackPlugin({

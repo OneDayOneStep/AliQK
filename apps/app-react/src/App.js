@@ -42,7 +42,8 @@ class Wrapper extends React.Component {
 export default class index extends React.Component {
     render() {
         return (
-            <BrowserRouter basename={window.__POWERED_BY_QIANKUN__ ? '/app-react' : '/'}>
+            // 是否独立运行决定根路径
+            <BrowserRouter basename={ window.__POWERED_BY_QIANKUN__ ? '/app-react' : '/' }>
                 <Wrapper>
                     <Route path='/page_A' component={ A } />
                     <Route path='/page_B' component={ B } />

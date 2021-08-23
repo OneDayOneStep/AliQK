@@ -7,6 +7,9 @@
         html, body {
             margin: 0;
         }
+        * {
+            font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+        }
         .microAppList {
             box-shadow: 0 0 4px #888;
             margin: 0;
@@ -18,14 +21,14 @@
             display: inline-block;
             line-height: 40px;
             padding: 0 10px;
-            background: #555;
+            background: #35495e;
             color: #fff;
             cursor: pointer;
             margin-right: 10px;
             font-size: 13px;
         }
         .microAppList .active {
-            background: #66cccc;
+            background: #41b883;
             color: #fff;
         }
     </style>
@@ -33,15 +36,18 @@
 
 <body>
 <div class="mainApp">
+    <!--微应用菜单-->
     <ul class="microAppList"></ul>
+    <!--微应用容器-->
     <main id="microAppContainer"></main>
 </div>
 
 <script>
+    // 微应用列表
     const apps = [{
-        name: "React",
-        path: "/app-react",
-        effective: true
+        name: "React", // 只是名称
+        path: "/app-react", // 推送到地址栏的路径 跟 index.js 的 activeRule 对应
+        effective: true // 忽略
     }, {
         name: "Vue for cli",
         path: "/app-vue-cli",
@@ -52,15 +58,17 @@
         effective: false
     }];
 
+    // 加载微应用
     function push(t, app) {
         if (!app.effective) {
-            alert("暂未支持");
+            alert("QianKun@2.4.x 暂不支持 module script");
             return;
         }
         Array.from(document.getElementsByClassName("active")).forEach(e =>{
             e.classList.remove("active");
         });
         t.classList.add("active");
+        // pushState 改变浏览器的地址栏并且会生成前后记录 但不会造成页面跳转/刷新
         history.pushState(null, "", app.path);
     }
 

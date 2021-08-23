@@ -7,8 +7,9 @@ function resolve(dir) {
 module.exports = {
     devServer: {
         headers: {
-            'Access-Control-Allow-Origin': '*',
-        },
+            // 允许跨域 否则 Qiankun 加载该微应用时可能报跨域问题
+            'Access-Control-Allow-Origin': '*'
+        }
     },
     configureWebpack: {
         resolve: {
@@ -22,5 +23,5 @@ module.exports = {
             libraryTarget: 'umd',
             jsonpFunction: `webpackJsonp_${name}`,
         }
-    },
+    }
 };
