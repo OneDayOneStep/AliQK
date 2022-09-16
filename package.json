@@ -11,6 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "html-webpack-plugin": "^5.3.2",
-    "qiankun": "^2.4.6"
+    "qiankun": "^2.4.6",
+    "webpack": "^5.20.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.11.0"
   }
 }
